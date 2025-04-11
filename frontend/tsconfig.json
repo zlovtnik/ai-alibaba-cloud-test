@@ -20,15 +20,25 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@env/*": [
+        "src/environments/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
 }

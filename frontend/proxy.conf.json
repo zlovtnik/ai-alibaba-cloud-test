@@ -1,0 +1,19 @@
+{
+    "/api": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "ws": true,
+        "pathRewrite": {
+            "^/api": ""
+        },
+        "headers": {
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-user-id"
+        },
+        "onProxyError": "function(err, req, res) { console.error('Proxy Error:', err); res.writeHead(500, { 'Content-Type': 'text/plain' }); res.end('Something went wrong. Please check if the backend server is running.'); }"
+    }
+}

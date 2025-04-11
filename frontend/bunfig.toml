@@ -1,0 +1,17 @@
+[install]
+# Use the same version of Node.js that Angular CLI expects
+node = "18.19.1"
+prefer = "online"
+
+[test]
+# Configure test runner for Angular tests
+runner = "karma"
+
+[build]
+# Configure build settings for Angular
+target = "browser"
+entrypoints = ["src/main.ts"]
+
+[env]
+# Set Node.js version for the environment
+NODE_VERSION = "18.19.1" 
