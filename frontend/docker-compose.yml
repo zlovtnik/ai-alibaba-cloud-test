@@ -1,16 +1,10 @@
-version: '3.8'
-
 services:
   nginx:
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "80:80"
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./dist/frontend:/usr/share/nginx/html
-    depends_on:
-      frontend:
-        condition: service_healthy
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -26,8 +20,8 @@ services:
     ports:
       - "4200:4200"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:4200"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s 
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:4200"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 120s 
